@@ -61,6 +61,13 @@ const cases = [
   { brand: 'Moda LUXE', result: '+290% faturamento', period: '8 meses', service: 'Branding + Tráfego', gradient: 'from-purple-600 to-pink-700', emoji: '👗' },
 ]
 
+const caseImages = [
+  'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop',
+]
+
 const steps = [
   {
     n: '01',
@@ -126,6 +133,8 @@ const formFields = [
   { label: 'Site / Empresa', type: 'text', ph: 'empresa.com.br' },
 ]
 
+const clients = ['Natura', 'iFood', 'Nubank', 'Magalu', 'C6 Bank', 'Itaú', 'Bradesco', 'Vivo']
+
 // ─── Sub-components (hooks never called inside .map()) ────────────────────────
 
 const ServiceCard = ({ service, index }) => {
@@ -169,19 +178,26 @@ const CaseCard = ({ item, index }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`case-card aspect-video bg-gradient-to-br ${item.gradient} relative flex items-end p-6 cursor-pointer rounded-xl overflow-hidden`}
+      className="case-card relative cursor-pointer rounded-xl overflow-hidden group"
     >
-      <div className="case-overlay absolute inset-0 bg-black/50 flex items-center justify-center rounded-xl">
-        <div className="text-center">
-          <div className="text-white font-bold text-2xl mb-1">{item.result}</div>
-          <div className="text-white/70 text-sm">{item.service}</div>
+      <img
+        src={caseImages[index % caseImages.length]}
+        alt=""
+        className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className={`bg-gradient-to-br ${item.gradient} p-6 relative flex items-end`}>
+        <div className="case-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-white font-bold text-2xl mb-1">{item.result}</div>
+            <div className="text-white/70 text-sm">{item.service}</div>
+          </div>
         </div>
-      </div>
-      <div className="relative z-10">
-        <span className="text-3xl mr-2">{item.emoji}</span>
-        <div className="inline">
-          <div className="text-white font-bold text-lg">{item.brand}</div>
-          <div className="text-white/60 text-xs">{item.period} · {item.service}</div>
+        <div className="relative z-10">
+          <span className="text-3xl mr-2">{item.emoji}</span>
+          <div className="inline">
+            <div className="text-white font-bold text-lg">{item.brand}</div>
+            <div className="text-white/60 text-xs">{item.period} · {item.service}</div>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -329,6 +345,12 @@ export default function App() {
 
       {/* ── Hero ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background image */}
+        <img
+          src="https://images.unsplash.com/photo-1726804880693-8fcdd773ce80?w=1920&q=80&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-15"
+        />
         <div
           className="absolute inset-0"
           style={{
@@ -446,6 +468,23 @@ export default function App() {
         </div>
       </div>
 
+      {/* ── Client logos strip ── */}
+      <div className="py-10 border-b border-[#1f1f1f]">
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-center text-gray-700 text-xs tracking-[0.3em] uppercase mb-6">Marcas que confiam na ORBIT</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {clients.map((name, i) => (
+              <span
+                key={i}
+                className="text-gray-600 font-black text-lg tracking-wide hover:text-gray-400 transition-colors cursor-default select-none"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* ── Services ── */}
       <section id="serviços" className="py-32 max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
@@ -509,6 +548,69 @@ export default function App() {
         </div>
       </section>
 
+      {/* ── About / Team ── */}
+      <section className="py-32 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-[#ff6b35] text-xs tracking-[0.3em] uppercase mb-3"
+            >
+              Sobre Nós
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-black text-5xl md:text-6xl text-white mb-6"
+            >
+              Quem somos
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-400 leading-relaxed mb-6"
+            >
+              A ORBIT é uma agência de marketing digital focada em resultado. Combinamos criatividade, dados e
+              tecnologia para acelerar o crescimento das marcas que acreditam no poder do digital.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-gray-500 leading-relaxed text-sm"
+            >
+              Com mais de 5 anos no mercado e 150+ clientes atendidos, nosso time de especialistas entrega
+              estratégias personalizadas que geram ROI real e crescimento sustentável.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative rounded-2xl overflow-hidden h-[400px]"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop"
+              alt="equipe ORBIT"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+            <div className="absolute bottom-6 left-6">
+              <p className="text-[#ff6b35] font-bold text-lg">Nossa Equipe</p>
+              <p className="text-white text-sm">25+ especialistas em crescimento digital</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Process ── */}
       <section id="processo" className="py-32 max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
@@ -557,6 +659,12 @@ export default function App() {
 
       {/* ── Contact CTA ── */}
       <section id="contato" className="py-32 relative overflow-hidden">
+        {/* CTA background image */}
+        <img
+          src="https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?w=1920&q=80&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-10"
+        />
         <div
           className="absolute inset-0"
           style={{
