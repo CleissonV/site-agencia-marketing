@@ -1,0 +1,51 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #0a0a0a; color: #fafafa; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-left { animation: marqueeLeft 25s linear infinite; }
+.marquee-right { animation: marqueeRight 25s linear infinite; }
+
+@keyframes gradRotate {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #ff6b35, #4ecdc4, #ffe66d);
+  background-size: 200% 200%;
+  animation: gradRotate 4s ease infinite;
+  z-index: -1;
+}
+
+.service-card {
+  transition: all 0.3s ease;
+  border: 1px solid #1f1f1f;
+}
+.service-card:hover { transform: translateY(-6px); }
+
+.case-card { transition: all 0.4s ease; overflow: hidden; }
+.case-card:hover .case-overlay { opacity: 1; }
+.case-overlay { opacity: 0; transition: opacity 0.3s ease; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#ff6b35, #4ecdc4); border-radius: 2px; }
