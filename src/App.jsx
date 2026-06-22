@@ -289,7 +289,11 @@ export default function App() {
       {/* ── Navigation ── */}
       <nav className={`fixed w-full z-40 transition-all duration-500 ${scrolled ? 'bg-[#0a0a0a]/96 backdrop-blur-xl border-b border-[#1f1f1f] py-3' : 'py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="font-black text-xl flex items-center gap-1">
+          <a href="#" className="font-black text-xl flex items-center gap-2">
+            <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
+              <ellipse cx="16" cy="16" rx="13" ry="6" stroke="#4ecdc4" strokeWidth="1.8" transform="rotate(-30 16 16)" />
+              <circle cx="16" cy="16" r="4.5" fill="#ff6b35" />
+            </svg>
             <span className="text-white">ORBIT</span>
             <span className="text-[#ff6b35]">.</span>
           </a>
