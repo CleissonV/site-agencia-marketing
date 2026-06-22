@@ -55,10 +55,10 @@ const services = [
 ]
 
 const cases = [
-  { brand: 'TechStore', result: '+420% vendas', period: '6 meses', service: 'Tráfego Pago', gradient: 'from-orange-600 to-rose-700', emoji: '📱' },
-  { brand: 'Clínica Bella', result: '+180 leads/mês', period: '3 meses', service: 'Social Media', gradient: 'from-teal-600 to-cyan-700', emoji: '💆' },
-  { brand: 'FoodBrasil', result: 'ROAS 8.4x', period: '4 meses', service: 'Google Ads', gradient: 'from-yellow-500 to-orange-600', emoji: '🍔' },
-  { brand: 'Moda LUXE', result: '+290% faturamento', period: '8 meses', service: 'Branding + Tráfego', gradient: 'from-purple-600 to-pink-700', emoji: '👗' },
+  { brand: 'TechStore', result: '+420% vendas', period: '6 meses', service: 'Tráfego Pago', gradient: 'from-orange-600 to-rose-700' },
+  { brand: 'Clínica Bella', result: '+180 leads/mês', period: '3 meses', service: 'Social Media', gradient: 'from-teal-600 to-cyan-700' },
+  { brand: 'FoodBrasil', result: 'ROAS 8.4x', period: '4 meses', service: 'Google Ads', gradient: 'from-yellow-500 to-orange-600' },
+  { brand: 'Moda LUXE', result: '+290% faturamento', period: '8 meses', service: 'Branding + Tráfego', gradient: 'from-purple-600 to-pink-700' },
 ]
 
 const caseImages = [
@@ -192,10 +192,10 @@ const CaseCard = ({ item, index }) => {
             <div className="text-white/70 text-sm">{item.service}</div>
           </div>
         </div>
-        <div className="relative z-10">
-          <span className="text-3xl mr-2">{item.emoji}</span>
-          <div className="inline">
-            <div className="text-white font-bold text-lg">{item.brand}</div>
+        <div className="relative z-10 flex items-center gap-3">
+          <span className="inline-flex w-11 h-11 items-center justify-center rounded-lg bg-white/15 backdrop-blur-sm text-white font-extrabold text-lg">{item.brand.charAt(0)}</span>
+          <div>
+            <div className="text-white font-bold text-lg leading-tight">{item.brand}</div>
             <div className="text-white/60 text-xs">{item.period} · {item.service}</div>
           </div>
         </div>
@@ -345,12 +345,14 @@ export default function App() {
 
       {/* ── Hero ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background image */}
-        <img
-          src="https://images.unsplash.com/photo-1726804880693-8fcdd773ce80?w=1920&q=80&auto=format&fit=crop"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-15"
-        />
+        {/* Background video */}
+        <video
+          autoPlay loop muted playsInline
+          poster="https://images.unsplash.com/photo-1726804880693-8fcdd773ce80?w=1920&q=80&auto=format&fit=crop"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        >
+          <source src="https://assets.mixkit.co/videos/44499/44499-1080.mp4" type="video/mp4" />
+        </video>
         <div
           className="absolute inset-0"
           style={{
