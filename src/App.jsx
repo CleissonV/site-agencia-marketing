@@ -352,7 +352,7 @@ export default function App() {
         {/* Background video */}
         <video
           autoPlay loop muted playsInline
-          poster="https://images.unsplash.com/photo-1726804880693-8fcdd773ce80?w=1920&q=80&auto=format&fit=crop"
+          poster="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80&auto=format&fit=crop"
           className="absolute inset-0 w-full h-full object-cover opacity-32"
         >
           <source src="/hero.mp4" type="video/mp4" />
